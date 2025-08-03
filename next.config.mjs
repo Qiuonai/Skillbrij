@@ -1,6 +1,9 @@
-import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -20,4 +23,4 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ['app-cosmic.com', '*.app-cosmic.com', 'vibecode.net', '*.vibecode.net'],
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
